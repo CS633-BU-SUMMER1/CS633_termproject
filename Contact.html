@@ -9,13 +9,52 @@
 	<script src="JS/jquery.js"></script>	
 
     <link rel="stylesheet" type="text/css" href="css/jcarousel.connected-carousels.css">
-    <script type="text/javascript" src="JS/jquery.jcarousel.min.js"></script>
+   <script type="text/javascript" src="JS/jquery.jcarousel.min.js"></script>
 	<script type="text/javascript" src="JS/jcarousel.connected-carousels.js"></script>
 	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Javascript -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="js/init.js"></script>
+	
+	<script>
+	function validate() {
+		var fName = document.getElementById("firstName").value;
+		var lName = document.getElementById("lastName").value;
+		var facilitatorName = document.getElementById("facilitator").value;
+		var phoneNum = document.getElementById("phone").value;
+		var email = document.getElementById("emailID").value;
+
+		if(fName.length <= 2 || parseInt(fName) % 1 == 0) {
+			alert("First Name should be minimum 3 characters");
+			return false;
+		} 
+		if(lName.length <= 2 || parseInt(lName) % 1 == 0) {
+			alert("Last Name should minimum 3 characters");
+			return false;
+		} 
+		if(facilitatorName.length <= 2 || parseInt(facilitatorName) % 1 == 0) {
+			alert("Factilitator Name should be minimum 3 characters");
+			return false;
+		} 
+
+		if(phoneNum.length <= 6 || phoneNum.length > 10 || parseInt(phoneNum) % 1 != 0) {
+			alert("Not a valid phone number, \nPhone number should be between 7 to 10 digits");
+			return false;	
+		}
+		
+	
+		
+		if(!email.match(/\S+@\S+\.\S+$/)) {
+			alert("Email address format is not valid");
+			return false;
+		}
+		
+		return true;
+
+	}
+	</script>
+	
 </head>
 <body>
 	<div id="page-wrapper">
@@ -35,11 +74,12 @@
 				<li><a href="Help.html">Help</a></li>
    			 </ul>
 			 
-	<!--Side Menu Content begin -->
+			 <!--Side Menu Content begin -->
 		<a class="menu-icon" href="#"><i class="fa fa-bars"></i></a>
         <ul class="side-menu">
           <h2 class="title">Menu</h2>
           <li class="row">
+		  
             <ul>
               <li class="metro red half"><a href="https://plus.google.com"><i class="fa fa-google"></i></a></li>
               <li class="metro light-blue"><a href="http://twitter.com"><i class="fa fa-twitter"></i></a></li>
@@ -47,7 +87,7 @@
           </li>
           <li class="row">
             <ul>
-              <li class="metro blue half"><a href="http://facebook.com"><i class="fa fa-facebook"></i></a></li>
+              <li class="metro blue half"><a href="www.facebook.com"><i class="fa fa-facebook"></i></a></li>
               <li class="metro green half"><a href="#"><i class="fa fa-android"></i></a></li>
             </ul>
           </li>
@@ -64,28 +104,54 @@
           </li>
         </ul>
 
-		<!--Side Menu Content end -->
 		
 			 
 			 
 			 
+		<!--Side Menu Content end -->
+
   		</div>
 		<section>
-			<header class="main">
-				<h2>Home</h2>
+			<header class="mainForm">
+				<h2 id="Chhdr" align="Center";> Contact Form</h2>
 			</header>
+				<div id="contactForm">
+					<form name="Contact" action="#" method="post" onsubmit="return validate()">
+						<p>First Name:
+							<input type="text" id="firstName" name="firstName" required placeholder="Enter your first name here">
+						</p>
+						<p>Last Name:
+							<input type="text" id="lastName" name="lastName" required placeholder="Enter your last name here">
+						</p>
+						<p>Contact number:
+							<input type="text" id="phone" required name="phone" placeholder="Enter phone number">
+						</p>
+						<p>Enter Email:
+							<input type="text" id="emailID" name="emailID" required placeholder="Enter email address">
+						</p>
+						<p>Contact Method:<br>
+							<input type="radio" name="contact" value="Email" checked="checked">Email <br>
+							<input type="radio" name="contact" value="Phone">Phone <br>
+						</p>
+						<p>
+							<input type="submit" name="submitButton" value="Submit" id="submit">
+						</p>
+
+					</form>
+				</div>
+
 			
 		</section>
 
 		
 
 
-	<div id="footr">
+
+
+<div id="footr">
 		<p> Copyright 2015 BU MET CS 633 - No Rights Reserved</p>
 	</div>
 
 	</div>
-	
 </body>
 </html>
-
